@@ -1,7 +1,6 @@
 from abc import ABC
 
-
-class Notifier(ABC):
+class Notificat(ABC):
 
     def __init__(self):
         pass
