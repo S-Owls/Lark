@@ -6,5 +6,5 @@ class Notificat(metaclass=ABCMeta):
         pass
     
     @abstractmethod
-    def send(self, message: str) -> None:
+    def send(self, message:str) -> None:
         pass
