@@ -21,7 +21,7 @@ jobs:
         python-version: ${{ matrix.python-version }}
     - name: test secret
       run:
-        if [ $TEST_TOKEN==testtest ]; then echo same; else echo diff; fi
+        if [ $TEST_TOKEN==testtet ]; then echo same; else echo diff; fi
         
         
 
