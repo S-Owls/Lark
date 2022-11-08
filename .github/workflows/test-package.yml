@@ -21,7 +21,7 @@ jobs:
         python-version: ${{ matrix.python-version }}
     - name: test secret
       run:
-        echo $TEST_TOKEN
+        echo ${TEST_TOKEN}
         
         
 
