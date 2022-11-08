@@ -72,7 +72,7 @@ class Slack(Notificat):
         
         response = response.json()
         if not response["ok"]:
-            print(f"[Error] func:Slack.{method_name} - {response['error']}")
+            print(f"[Error] func:Slack.{method_name} - {response}")
             
             # TO DO:
             # Determining the error message
