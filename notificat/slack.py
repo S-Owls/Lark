@@ -6,13 +6,12 @@ from notificat.base import Notificat
 
 
 class Slack(Notificat):
-    @overload
     def __init__(self, token:str):
         super().__init__()
         
         self.token = token
         
-    @overload
+        
     def send(self, channelID:str, message:str):
         """Send message to channel.
 
