@@ -19,9 +19,12 @@ jobs:
       uses: actions/setup-python@v3
       with:
         python-version: ${{ matrix.python-version }}
-    - name: test secret
+    - name: Run unittest
+      env:
+        SLACK_TOKEN: ${{secrets.SLACK_TOKEN}}
+        SLACK_TEST_CH_ID: ${{secrets.SLACK_TEST_CH_ID}}
       run:
-        python ./test.py --test ${{secrets.TEST_TOKEN}}
+        python -m unittest discover test
         
         
 

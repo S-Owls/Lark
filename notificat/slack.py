@@ -1,11 +1,11 @@
 import sys
 import requests
-from typing import overload, Dict
+from typing import Dict
 
 from notificat.base import Notificat
 
 
-class Slack(Notificat):
+class SlackAPI(Notificat):
     def __init__(self, token:str):
         super().__init__()
         
