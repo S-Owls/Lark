@@ -28,7 +28,7 @@ jobs:
         SLACK_TOKEN: ${{secrets.SLACK_TOKEN}}
         SLACK_TEST_CH_ID: ${{secrets.SLACK_TEST_CH_ID}}
       run:
-        python -m unittest discover test
+        python -m unittest discover tests
         
         
 
