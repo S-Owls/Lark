@@ -26,7 +26,7 @@ class Test_SlackAPI(TestCase):
         now = datetime.datetime.now()
         #str_now = now.strftime('%Y-%m-%d %H:%M:%S')
         try:
-            self.slackAPI.send("test", f"{now.strftime('%Y-%m-%d %H:%M:%S')} [unittest] SlackAPI.send()")
+            self.slackAPI.send(self.ch_id, f"{now.strftime('%Y-%m-%d %H:%M:%S')} [unittest] SlackAPI.send()")
         except Exception as e:
             print(e)
             
