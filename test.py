@@ -1,14 +1,10 @@
-import argparse
-
+import os
 
 if __name__=="__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--test", type=str, help="test")
-    args = parser.parse_args()
-    print(args.test)
+    print(os.environ['HOME'])
     
     
-    if args.test == "testtest":
+    if os.environ['TEST_TOKEN'] == "testtest":
         print("saaaameeee")
     else:
         print("diiiffffff")
