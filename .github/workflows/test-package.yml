@@ -2,11 +2,10 @@ name: Python package
 
 on:
   push:
-    branches: [ "st" ]
+    branches: [ "main", "st" ]
 
 jobs:
-  build:
-
+  Test:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
