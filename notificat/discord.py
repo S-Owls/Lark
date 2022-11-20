@@ -2,7 +2,6 @@ from requests import Response
 
 from notificat.base import Notificat
 import requests
-from typing import Dict, Any
 
 class DiscordClient(Notificat):
 
