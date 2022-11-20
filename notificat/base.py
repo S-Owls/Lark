@@ -1,10 +1,12 @@
 from abc import ABCMeta, abstractmethod
+import requests
 
-class Notificat(metaclass=ABCMeta):
+class Notificat(ABC):
     @abstractmethod
     def __init__(self):
         pass
-    
+
     @abstractmethod
-    def send(self, message:str) -> None:
+    def send(self, channelID: str, message: str) -> requests.Response:
         pass
+
