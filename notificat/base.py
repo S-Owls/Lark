@@ -1,7 +1,7 @@
 from abc import ABCMeta, abstractmethod
 import requests
 
-class Notificat(ABC):
+class Notificat(metaclass=ABCMeta):
     @abstractmethod
     def __init__(self):
         pass
