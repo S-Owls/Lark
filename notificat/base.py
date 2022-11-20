@@ -1,5 +1,5 @@
-from abc import ABC, abstractmethod
-
+from abc import ABCMeta, abstractmethod
+import requests
 
 class Notificat(ABC):
     @abstractmethod
@@ -7,5 +7,6 @@ class Notificat(ABC):
         pass
 
     @abstractmethod
-    def send(self, channelID: str, message: str) -> None:
+    def send(self, channelID: str, message: str) -> requests.Response:
         pass
+
