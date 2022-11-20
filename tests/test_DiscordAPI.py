@@ -6,7 +6,7 @@ from notificat import DiscordClient
 
 class Test_Discord(TestCase):
     def setUp(self):
-        if os.path.isfile("../.env"):
+        if os.path.isfile(".env"):
             from dotenv import load_dotenv
             load_dotenv()
 
