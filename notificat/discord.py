@@ -1,5 +1,3 @@
-from requests import Response
-
 from notificat.base import Notificat
 import requests
 
@@ -10,7 +8,7 @@ class DiscordClient(Notificat):
 
         self.token = token
 
-    def send(self, channelID: str, message: str) -> Response:
+    def send(self, channelID: str, message: str) -> requests.Response:
         """Send message to channel.
         Args:
             channelID (str): Channel ID where to send message.
@@ -23,7 +21,7 @@ class DiscordClient(Notificat):
                                  headers={"Content-Type": "application/json", "Authorization": f"Bot {self.token}"},
                                  json={"content": message})
 
-    def get_channel_list(self, serverID:str) -> Response:
+    def get_channel_list(self, serverID:str) -> requests.Response:
         """Get channel list in your server.
                 Args:
                     serverID (str): Server ID where to get the channel list.
@@ -34,7 +32,7 @@ class DiscordClient(Notificat):
         return requests.get(f"https://discord.com/api/guilds/{serverID}/channels",
                             headers={"Content-Type": "application/json", "Authorization": f"Bot {self.token}"})
 
-    def get_msg(self, channelID:str, max:int=None) -> Response:
+    def get_msg(self, channelID:str, max:int=None) -> requests.Response:
         """Get Message in your Channel
                 Args:
                     channelID (str): Channel ID where to get message.
@@ -50,7 +48,7 @@ class DiscordClient(Notificat):
 
         return requests.get(url, headers={"Content-Type": 'application/json', "Authorization": f"Bot {self.token}"})
 
-    def get_latest(self, channelID:str) -> Response:
+    def get_latest(self, channelID:str) -> requests.Response:
         """Get The Latest Message in your channel
                 Args:
                     channelID (str): Channel ID where to send message.
