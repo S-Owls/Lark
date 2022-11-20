@@ -1,9 +1,11 @@
-from abc import ABC
+from abc import ABC, abstractmethod
+
 
 class Notificat(ABC):
-
+    @abstractmethod
     def __init__(self):
         pass
 
-    def send(self, message: str) -> None:
+    @abstractmethod
+    def send(self, channelID: str, message: str) -> None:
         pass
