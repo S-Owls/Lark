@@ -20,8 +20,8 @@ class DiscordClient(Notificat):
         Returns:
             Response: Response to a request. If the request is successful, The status code is 200. You can get the response content with .json() method.
         """
-        return requests.post(f'https://discord.com/api/channels/{channelID}/messages',
-                                 headers={"Content-Type": 'application/json', "Authorization": f"Bot {self.token}"},
+        return requests.post(f"https://discord.com/api/channels/{channelID}/messages",
+                                 headers={"Content-Type": "application/json", "Authorization": f"Bot {self.token}"},
                                  json={"content": message})
 
     def get_channel_list(self, serverID:str) -> Response:
@@ -32,8 +32,8 @@ class DiscordClient(Notificat):
                 Returns:
                     Response: Response to a request. If the request is successful, The status code is 200. You can get the response content with .json() method.
                 """
-        return requests.get(f'https://discord.com/api/guilds/{serverID}/channels',
-                            headers={"Content-Type": 'application/json', "Authorization": f"Bot {self.token}"})
+        return requests.get(f"https://discord.com/api/guilds/{serverID}/channels",
+                            headers={"Content-Type": "application/json", "Authorization": f"Bot {self.token}"})
 
     def get_msg(self, channelID:str, max:int=None) -> Response:
         """Get Message in your Channel
@@ -44,7 +44,10 @@ class DiscordClient(Notificat):
                 Returns:
                     Response: Response to a request. If the request is successful, The status code is 200. You can get the response content with .json() method.
                 """
-        url = f'https://discord.com/api/channels/{channelID}/messages?limit={max}' if max != None else f'https://discord.com/api/channels/{channelID}/messages'
+        url = f"https://discord.com/api/channels/{channelID}/messages"
+
+        if max is not None:
+            url += f"?limit={max}"
 
         return requests.get(url, headers={"Content-Type": 'application/json', "Authorization": f"Bot {self.token}"})
 
@@ -56,5 +59,5 @@ class DiscordClient(Notificat):
                 Returns:
                     Response: Response to a request. If the request is successful, The status code is 200. You can get the response content with .json() method.
                 """
-        return requests.get(f'https://discord.com/api/channels/{channelID}/messages?limit=1',
-                                 headers={"Content-Type": 'application/json', "Authorization": f"Bot {self.token}"})
+        return requests.get(f"https://discord.com/api/channels/{channelID}/messages?limit=1",
+                                 headers={"Content-Type": "application/json", "Authorization": f"Bot {self.token}"})
