@@ -29,19 +29,19 @@ class Test_SlackAPI(TestCase):
     
     def test_send(self):       
         response = self.slackAPI.send(self.ch_id, f"{self.now.strftime('%Y-%m-%d %H:%M:%S')} [unittest] SlackAPI.send()")
-        self.assertTrue(response["ok"])
+        self.assertTrue(response.json()["ok"])
         
         
     def test_get_msg(self):
         response = self.slackAPI.get_msg(self.ch_id, 5)
-        self.assertTrue(response["ok"])
+        self.assertTrue(response.json()["ok"])
     
             
     def test_get_latest_msg(self):
         response = self.slackAPI.get_latest_msg(self.ch_id)
-        self.assertTrue(response["ok"])
+        self.assertTrue(response.json()["ok"])
         
         
     def test_get_channel_list(self):
         response = self.slackAPI.get_channel_list(5)
-        self.assertTrue(response["ok"])
+        self.assertTrue(response.json()["ok"])

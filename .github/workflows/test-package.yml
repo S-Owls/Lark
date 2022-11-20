@@ -2,10 +2,10 @@ name: Python package
 
 on:
   push:
-    branches: [ "main", "st" ]
+    branches: [ "main" ]
 
   pull_request:
-    branches: [ "main", "st" ]
+    branches: [ "main" ]
 
 jobs:
   Test:
@@ -31,6 +31,3 @@ jobs:
         SLACK_TEST_CH_ID: ${{secrets.SLACK_TEST_CH_ID}}
       run:
         python -m unittest discover tests
-        
-        
-

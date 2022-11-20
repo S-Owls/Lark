@@ -12,7 +12,7 @@ class SlackAPI(Notificat):
         self.token = token
         
         
-    def send(self, channelID:str, message:str) -> Dict[str, Any]:
+    def send(self, channelID:str, message:str) -> requests.Response:
         """Send message to channel.
 
         Args:
@@ -20,16 +20,16 @@ class SlackAPI(Notificat):
             message (str): The message that send to be the channel.
             
         Returns:
-            Dict[str, Any]: Response to a request. If the request is successful, the value with key "ok" is "True".
+            requests.Response: Response to a request.
         """
-        response = requests.post("https://slack.com/api/chat.postMessage",
+      
+        return requests.post("https://slack.com/api/chat.postMessage",
                                  headers={"Content-Type": "application/json",
                                           "Authorization": f"Bearer {self.token}"},
                                  json={"text": message, "channel": channelID})        
-        return response.json()
         
     
-    def get_msg(self, channelID:str, max:int) -> Dict[str, Any]:
+    def get_msg(self, channelID:str, max:int) -> requests.Response:
         """Get messages from the input channel.          
             If channel has not enough messages to get, The number of message what you get can be less then `max` value.
 
@@ -38,42 +38,42 @@ class SlackAPI(Notificat):
             max (int): Maximum number of messages what you get.
 
         Returns:
-            Dict[str, Any]: Response to a request. If the request is successful, the value with key "ok" is "True".
+            requests.Response: Response to a request.
         """
-        response = requests.get(f'https://slack.com/api/conversations.history?channel={channelID}&limit={max}',
-                                headers={'Content-Type': 'application/json', 'Authorization': f'Bearer {self.token}'})
         
-        return response.json()
+        return requests.get(f'https://slack.com/api/conversations.history?channel={channelID}&limit={max}',
+                                headers={'Content-Type': 'application/json', 'Authorization': f'Bearer {self.token}'})
     
     
-    def get_latest_msg(self, channelID:str) -> Dict[str, Any]:
+    def get_latest_msg(self, channelID:str) -> requests.Response:
         """Get last last message from input channel.
         
         Args:
             channelID (str):  Channel ID where to get message.
 
         Returns:
-            Dict[str, Any]: Response to a request. If the request is successful, the value with key "ok" is "True".
+            requests.Response: Response to a request.
         """
-        response = requests.get(f'https://slack.com/api/conversations.history?channel={channelID}&limit=1',
-                                 headers={'Content-Type': 'application/json', 'Authorization': f'Bearer {self.token}'})        
-        return response.json()
+       
+        return requests.get(f'https://slack.com/api/conversations.history?channel={channelID}&limit=1',
+                                 headers={'Content-Type': 'application/json', 'Authorization': f'Bearer {self.token}'})      
             
             
-    def get_channel_list(self, max:int=1) -> Dict[str, Any]:
+    def get_channel_list(self, max:int=None) -> requests.Response:
         """Get channel list.
 
         Args:
             max (int): Maximum number of channels to get. Defaults to 1.
 
         Returns:
-            Dict[str, Any]: Response to a request. If the request is successful, the value with key "ok" is "True".
+            requests.Response: Response to a request.
         """
-        response = requests.get(f"https://slack.com/api/conversations.list?limit={max}",
-                                headers={"Content-Type": "application/json",
-                                         "Authorization": f"Bearer {self.token}"})        
+        url = f"https://slack.com/api/conversations.list"
         
-        return response.json()    
+        if max is not None:
+            url += f"?limit={max}"
+                        
+        return requests.get(url, headers={"Content-Type": "application/json", "Authorization": f"Bearer {self.token}"})        
     
             
         
