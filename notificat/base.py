@@ -1,9 +1,10 @@
-from abc import ABC
+from abc import ABCMeta, abstractmethod
 
-class Notificat(ABC):
-
+class Notificat(metaclass=ABCMeta):
+    @abstractmethod
     def __init__(self):
         pass
-
-    def send(self, message: str) -> None:
+    
+    @abstractmethod
+    def send(self, message:str) -> None:
         pass
