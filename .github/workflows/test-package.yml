@@ -29,5 +29,8 @@ jobs:
       env:
         SLACK_TOKEN: ${{secrets.SLACK_TOKEN}}
         SLACK_TEST_CH_ID: ${{secrets.SLACK_TEST_CH_ID}}
+        DISCORD_SERVER_ID: ${{secrets.DISCORD_SERVER_ID}}
+        DISCORD_TOKEN: ${{secrets.DISCORD_TOKEN}}
+        DISCORD_TEST_CH_ID: ${{secrets.DISCORD_TEST_CH_ID}}
       run:
         python -m unittest discover tests
